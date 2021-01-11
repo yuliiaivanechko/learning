@@ -1,5 +1,5 @@
-#ifndef vector_h
-#define vector_h
+#ifndef vector_hpp
+#define vector_hpp
 
 #include <iostream>
 
@@ -70,4 +70,4 @@ template <class T> void Vector<T>::display() {
   std::cout << std::endl;
 }
 
-#endif /* vector_h */
+#endif /* vector_hpp */
