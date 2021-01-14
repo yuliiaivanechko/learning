@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+namespace library {
+
 template <class T>
 class Vector {
   T *arr;
@@ -76,5 +78,5 @@ void Vector<T>::display() {
   for (int i = 0; i != n; ++i) std::cout << arr[i] << '\t';
   std::cout << std::endl;
 }
-
+}  // namespace library
 #endif /* vector_hpp */

@@ -2,20 +2,20 @@
 
 #include <iostream>
 
-void fill_array(int* const arr, const int& size) {
+void library::fill_array(int* const arr, const int& size) {
   for (std::size_t i = 0; i != size; ++i) {
     arr[i] = rand() % 30;
   }
 }
 
-void print_array(const int const* arr, const int& size) {
+void library::print_array(const int const* arr, const int& size) {
   for (std::size_t i = 0; i != size; ++i) {
     std::cout << arr[i] << "\t";
   }
   std::cout << std::endl;
 }
 
-void push_back(int*& arr, int& size, const int& element) {
+void library::push_back(int*& arr, int& size, const int& element) {
   int* new_arr = new int[size + 1];
   for (std::size_t i = 0; i != size; ++i) {
     new_arr[i] = arr[i];
@@ -25,7 +25,7 @@ void push_back(int*& arr, int& size, const int& element) {
   arr = new_arr;
 }
 
-void pop_back(int*& arr, int& size) {
+void library::pop_back(int*& arr, int& size) {
   int* new_arr = new int[size - 1];
   for (std::size_t i = 0; i != size - 1; ++i) {
     new_arr[i] = arr[i];
