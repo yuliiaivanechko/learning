@@ -3,15 +3,12 @@
 
 #include <iostream>
 
-namespace library {
-
 template <class T>
 class Vector {
   T *arr;
   int n;
 
  public:
-  class Range {};
   Vector();
   Vector(int num);
   Vector(const Vector &v);
@@ -27,9 +24,11 @@ Vector<T>::Vector() : arr(nullptr), n(0) {}
 
 template <class T>
 Vector<T>::Vector(int num) {
-  if (num < 0) throw Range();
+  if (num < 0) {
+    throw std::length_error("Vector wrong length");
+  }
   n = num;
-  arr = new T[n];
+  arr = new T[n]{};
 }
 
 template <class T>
@@ -69,7 +68,6 @@ int Vector<T>::size() const {
 
 template <class T>
 T &Vector<T>::operator[](int num) const {
-  if (num < 0) throw Range();
   return arr[num];
 }
 
@@ -78,5 +76,4 @@ void Vector<T>::display() {
   for (int i = 0; i != n; ++i) std::cout << arr[i] << '\t';
   std::cout << std::endl;
 }
-}  // namespace library
 #endif /* vector_hpp */

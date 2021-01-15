@@ -1,4 +1,5 @@
 #include <cstddef>
+#include <stdexcept>
 
 #include "arr.hpp"
 #include "vector.hpp"
@@ -17,15 +18,17 @@ int multiply(int a, int b) { return a * b; }
 void print_result(int (*func)(int, int), int one, int two) {
   cout << func(one, two) << std::endl;
 }
+void test() {
+  try {
+    Vector<int> v(-2);
+  } catch (const std::bad_alloc& err) {
+    std::cerr << err.what() << std::endl;
+  } catch (const std::length_error& err) {
+    std::cerr << err.what() << std::endl;
+  }
+}
 
 int main(int argc, const char* argv[]) {
-  int size = 7;
-  int* array = new int[size];
-  library::fill_array(array, size);
-  library::print_array(array, size);
-  library::push_back(array, size, 19);
-  library::print_array(array, size);
-  library::pop_back(array, size);
-  library::print_array(array, size);
+  test();
   return 0;
 }
