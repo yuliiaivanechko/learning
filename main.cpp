@@ -27,7 +27,6 @@ void test() {
     std::cerr << err.what() << std::endl;
   }
 }
-
 int main(int argc, const char* argv[]) {
   test();
   int a = 7;
