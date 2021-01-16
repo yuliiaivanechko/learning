@@ -30,5 +30,7 @@ void test() {
 
 int main(int argc, const char* argv[]) {
   test();
+  int a = 7;
+  std::cout << a << std::endl;
   return 0;
 }
