@@ -1,6 +1,7 @@
 #ifndef vector_hpp
 #define vector_hpp
 
+#include <initializer_list>
 #include <iostream>
 
 template <class T>
@@ -12,6 +13,7 @@ class Vector {
   Vector();
   Vector(int num);
   Vector(const Vector &v);
+  Vector(const std::initializer_list<T> &list);
   void fill();
   void operator=(const Vector<T> &v);
   T &operator[](int num) const;
@@ -24,9 +26,7 @@ Vector<T>::Vector() : arr(nullptr), n(0) {}
 
 template <class T>
 Vector<T>::Vector(int num) {
-  if (num < 0) {
-    throw std::length_error("Vector wrong length");
-  }
+  assert(num > 0);
   n = num;
   arr = new T[n]{};
 }
@@ -35,6 +35,17 @@ template <class T>
 Vector<T>::~Vector() {
   delete[] arr;
   arr = nullptr;
+}
+
+template <class T>
+Vector<T>::Vector(const std::initializer_list<T> &list) {
+  arr = new T[list.size()];
+  n = list.size();
+  auto it = list.begin();
+
+  for (int i = 0; i != list.size(); ++i, ++it) {
+    arr[i] = *it;
+  }
 }
 
 template <class T>
