@@ -5,8 +5,10 @@
 #include <initializer_list>
 #include <iostream>
 
+#include "container.hpp"
+
 template <class T>
-class Vector {
+class Vector : public Container<T> {
   T *arr;
   int n;
 
@@ -17,9 +19,9 @@ class Vector {
   Vector(const std::initializer_list<T> &list);
   void fill();
   void operator=(const Vector<T> &v);
-  T &operator[](int num) const;
-  void display();
-  int size() const;
+  T &operator[](int num) const override;
+  void display() const;
+  int size() const override;
   ~Vector();
 };
 template <class T>
@@ -79,7 +81,7 @@ T &Vector<T>::operator[](int num) const {
 }
 
 template <class T>
-void Vector<T>::display() {
+void Vector<T>::display() const {
   for (int i = 0; i != n; ++i) std::cout << arr[i] << '\t';
   std::cout << std::endl;
 }
