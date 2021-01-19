@@ -1,6 +1,7 @@
 #ifndef vector_hpp
 #define vector_hpp
 
+#include <algorithm>
 #include <initializer_list>
 #include <iostream>
 
@@ -38,14 +39,9 @@ Vector<T>::~Vector() {
 }
 
 template <class T>
-Vector<T>::Vector(const std::initializer_list<T> &list) {
-  arr = new T[list.size()];
-  n = list.size();
-  auto it = list.begin();
-
-  for (int i = 0; i != list.size(); ++i, ++it) {
-    arr[i] = *it;
-  }
+Vector<T>::Vector(const std::initializer_list<T> &list)
+    : n(list.size()), arr(new T[list.size()]) {
+  std::copy(list.begin(), list.end(), arr);
 }
 
 template <class T>
