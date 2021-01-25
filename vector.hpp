@@ -3,7 +3,6 @@
 
 #include <algorithm>
 #include <initializer_list>
-#include <iostream>
 
 #include "container.hpp"
 
@@ -14,13 +13,13 @@ class Vector : public Container<T> {
 
  public:
   Vector();
-  Vector(int num);
+  explicit Vector(int num);
   Vector(const Vector &v);
   Vector(const std::initializer_list<T> &list);
   void fill();
   void operator=(const Vector<T> &v);
   T &operator[](int num) const override;
-  void display() const;
+  void display() const override;
   int size() const override;
   ~Vector();
 };
@@ -38,6 +37,7 @@ template <class T>
 Vector<T>::~Vector() {
   delete[] arr;
   arr = nullptr;
+  std::cout << "Vector destructor" << std::endl;
 }
 
 template <class T>

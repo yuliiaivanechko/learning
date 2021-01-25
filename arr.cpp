@@ -3,6 +3,7 @@
 #include <iostream>
 
 void fill_array(int* const arr, const int& size) {
+  assert(size >= 0);
   for (std::size_t i = 0; i != size; ++i) {
     arr[i] = rand() % 30;
   }
