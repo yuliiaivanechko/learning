@@ -17,6 +17,8 @@ class Vector : public Container<T> {
   Vector(const Vector<T> &v);
   Vector(const std::initializer_list<T> &list);
   Vector(Vector<T> &&v);
+  T *begin();
+  T *end();
   void fill();
   Vector<T> &operator=(const Vector<T> &v);
   Vector<T> &operator=(Vector<T> &&v);
@@ -64,6 +66,16 @@ Vector<T>::Vector(const Vector<T> &v) {
 template <class T>
 void Vector<T>::fill() {
   for (int i = 0; i != size; ++i) arr[i] = rand() % 30;
+}
+
+template <class T>
+T *Vector<T>::begin() {
+  return size == 0 ? nullptr : arr;
+}
+
+template <class T>
+T *Vector<T>::end() {
+  return size == 0 ? nullptr : arr + size;
 }
 
 template <class T>
