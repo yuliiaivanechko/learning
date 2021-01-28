@@ -17,8 +17,8 @@ class Vector : public Container<T> {
   Vector(const Vector<T> &v);
   Vector(const std::initializer_list<T> &list);
   Vector(Vector<T> &&v);
-  T *begin();
-  T *end();
+  T *begin() const;
+  T *end() const;
   void fill();
   Vector<T> &operator=(const Vector<T> &v);
   Vector<T> &operator=(Vector<T> &&v);
@@ -69,12 +69,12 @@ void Vector<T>::fill() {
 }
 
 template <class T>
-T *Vector<T>::begin() {
+T *Vector<T>::begin() const {
   return size == 0 ? nullptr : arr;
 }
 
 template <class T>
-T *Vector<T>::end() {
+T *Vector<T>::end() const {
   return size == 0 ? nullptr : arr + size;
 }
 

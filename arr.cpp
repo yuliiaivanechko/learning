@@ -1,7 +1,5 @@
 #include "arr.hpp"
 
-#include <iostream>
-
 void fill_array(int* const arr, const int& size) {
   assert(size >= 0);
   for (std::size_t i = 0; i != size; ++i) {
@@ -9,7 +7,7 @@ void fill_array(int* const arr, const int& size) {
   }
 }
 
-void print_array(const int const* arr, const int& size) {
+void print_array(const int* arr, const int& size) {
   for (std::size_t i = 0; i != size; ++i) {
     std::cout << arr[i] << "\t";
   }
